@@ -22,6 +22,20 @@ gauntlet through the env at `MAKEFUN_ENV_URL` (`POST /game`, `/move`,
   most 8,192 bytes and no file is over 4,096 bytes.
 - MIT licensed; see `LICENSE`.
 
+## Revisions
+
+- En-passant captures are exempt from quiescence futility pruning: the
+  victim is not on the target square, so the old test valued the capture
+  at zero and could prune a winning en-passant capture.
+- The bishop-pair bonus is 50 centipawns, the value most engines use.
+
+## Practice results
+
+- Trial 0 of the house gauntlet: 3 wins, 1 draw, 2 losses, Elo 1,364.
+- Perft is correct on startpos, Kiwipete, en-passant, promotion and
+  castling positions, and a 300-ply make/unmake round-trip restores the
+  board, hash and side to move exactly.
+
 ## Grade it locally
 
 From the competition kit directory, with Docker:
